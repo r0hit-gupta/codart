@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Codart | Creative Coding Showcase</title>
+</head>
+
+<body>
+    <script>
+        // Setup the initial canvas
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            noStroke();
+            noLoop();
+        }
+
+        function draw() {
+            // Clear the canvas
+            clear();
+
+            // Define the position of the vertices
+            // the triangle
+            var x1 = 0,
+                y1 = 100,
+                x2 = x1,
+                y2 = y1 + random(70),
+                x3 = x1 + random(-50, 20),
+                y3 = y1 + random(-50, 20);
+
+            // Loop to generate triangles until the
+            // width of the viewport is coverd
+            for (var i = 0; x3 <= windowWidth + 200; i++) {
+                // Generate a random fill color for the triangle
+                fill(random(255), random(255), random(255), random(50, 100));
+                // Plot the triangle
+                triangle(x1, y1, x2, y2, x3, y3);
+                // Set the new coordinates for the vertices
+                x1 = x2,
+                    y1 = y2,
+                    x2 = x3,
+                    y2 = y3,
+                    x3 = x3 + random(-20, 150),
+                    y3 = y3 + random(-40, 70);
+            }
+        }
+
+        // Redraw the fractal on mouse click
+        function mouseClicked() {
+            draw();
+        }
+
+    </script>
+</body>
+</html>
